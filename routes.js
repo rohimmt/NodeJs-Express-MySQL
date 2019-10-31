@@ -9,8 +9,8 @@ module.exports = function(app) {
     app.route('/barang')
         .get(BarangController.barang);
 
-    // app.route('/users/:user_id')
-    //     .get(todoList.findUsers);
+    app.route('/barang/:parameter')
+        .get(BarangController.cariBarang);
 
     app.route('/barang')
         .post(BarangController.tambahBarang);
@@ -18,6 +18,6 @@ module.exports = function(app) {
     app.route('/barang')
         .put(BarangController.updateBarang);
     
-    // app.route('/users')
-    //     .delete(todoList.deleteUsers);
+    app.route('/barang')
+        .delete(BarangController.hapusBarang);
 };

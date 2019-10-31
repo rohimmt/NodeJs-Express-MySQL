@@ -17,20 +17,20 @@ exports.index = function(req, res) {
     response.ok("Load success", res)
 };
 
-// exports.findUsers = function(req, res) {
+exports.cariBarang = function(req, res) {
     
-//     var user_id = req.params.user_id;
+    var parameter = req.params.parameter;
+    // var nama_barang = req.params.nama_barang;
 
-//     connection.query('SELECT * FROM person where id = ?',
-//     [ user_id ], 
-//     function (error, rows, fields){
-//         if(error){
-//             console.log(error)
-//         } else{
-//             response.ok(rows, res)
-//         }
-//     });
-// };
+    connection.query("SELECT * FROM barang WHERE kode_barang LIKE '%"+parameter+"%' OR nama_barang LIKE '%"+parameter+"%'", 
+    function (error, rows, fields){
+        if(error){
+            console.log(error)
+        } else{
+            response.ok(rows, res)
+        }
+    });
+};
 
 exports.tambahBarang = function(req, res) {
     
@@ -73,17 +73,17 @@ exports.updateBarang = function(req, res) {
     });
 };
 
-// exports.deleteUsers = function(req, res) {
+exports.hapusBarang = function(req, res) {
     
-//     var user_id = req.body.user_id;
+    var kode_barang = req.body.kode_barang;
 
-//     connection.query('DELETE FROM person WHERE id = ?',
-//     [ user_id ], 
-//     function (error, rows, fields){
-//         if(error){
-//             console.log(error)
-//         } else{
-//             response.ok("Berhasil menghapus user!", res)
-//         }
-//     });
-// };
+    connection.query('DELETE FROM barang WHERE kode_barang = ?',
+    [ kode_barang ], 
+    function (error, rows, fields){
+        if(error){
+            console.log(error)
+        } else{
+            response.ok("Berhasil menghapus barang!", res)
+        }
+    });
+};
