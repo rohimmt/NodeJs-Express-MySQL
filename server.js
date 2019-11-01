@@ -1,8 +1,8 @@
 var express = require('express'),
     app = express(),
-    port = process.env.PORT || 3001,
-    bodyParser = require('body-parser'),
-    controller = require('./controllers/BarangController');
+    port = process.env.PORT || 3000,
+    bodyParser = require('body-parser');
+    // controller = require('./controllers/BarangController');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
